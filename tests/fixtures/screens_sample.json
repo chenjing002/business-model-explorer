@@ -1,0 +1,599 @@
+{
+ "schema_version": 1,
+ "unit": "CNY_yuan",
+ "fiscal_year": "2025",
+ "window": [
+  "2021",
+  "2022",
+  "2023",
+  "2024",
+  "2025"
+ ],
+ "universe": {
+  "analyzed_ok": 4,
+  "excluded_check_failures": 0,
+  "excluded_incomplete_years": 0,
+  "excluded_below_revenue_floor": 1,
+  "revenue_floor": 1000000000.0,
+  "ranked": 3
+ },
+ "lists": [
+  {
+   "id": "multi",
+   "title": "多项入选",
+   "summary": "同时进入下列五个榜单中至少 3 个的公司。",
+   "criteria": [
+    "入选榜单数 ≥ 3（共 5 个）",
+    "同数时按五年平均归母净资产收益率排序"
+   ],
+   "sort": "按入选榜单数从多到少",
+   "concepts": [
+    "fcf",
+    "roce",
+    "rnoa",
+    "ccc"
+   ],
+   "columns": [
+    {
+     "key": "hits",
+     "label": "入选榜单数",
+     "unit": "count"
+    },
+    {
+     "key": "lists",
+     "label": "入选榜单",
+     "unit": "text"
+    },
+    {
+     "key": "roe_avg",
+     "label": "五年平均归母 ROE",
+     "unit": "pct"
+    },
+    {
+     "key": "market_cap",
+     "label": "2025 年末总市值",
+     "unit": "CNY_yuan"
+    }
+   ],
+   "trend": {
+    "label": "归母净资产收益率",
+    "unit": "pct"
+   },
+   "count": 3,
+   "rows": [
+    {
+     "ts_code": "T00003.SZ",
+     "name": "示例丙",
+     "industry": "测试",
+     "values": {
+      "hits": 5,
+      "lists": "自由现金流持续增长、高且稳定的净资产收益率、经营资产回报高、先收款后付款、利润含金量高",
+      "roe_avg": 0.258,
+      "market_cap": null
+     },
+     "trend": [
+      0.25,
+      0.3,
+      0.28,
+      0.22,
+      0.24
+     ]
+    },
+    {
+     "ts_code": "T00001.SH",
+     "name": "示例甲",
+     "industry": "测试",
+     "values": {
+      "hits": 5,
+      "lists": "自由现金流持续增长、高且稳定的净资产收益率、经营资产回报高、先收款后付款、利润含金量高",
+      "roe_avg": 0.2,
+      "market_cap": 90000000000.0
+     },
+     "trend": [
+      0.2,
+      0.2,
+      0.2,
+      0.2,
+      0.2
+     ]
+    },
+    {
+     "ts_code": "T00002.SZ",
+     "name": "示例乙",
+     "industry": "测试",
+     "values": {
+      "hits": 4,
+      "lists": "自由现金流持续增长、高且稳定的净资产收益率、经营资产回报高、利润含金量高",
+      "roe_avg": 0.2,
+      "market_cap": 90000000000.0
+     },
+     "trend": [
+      0.2,
+      0.2,
+      0.2,
+      0.2,
+      0.2
+     ]
+    }
+   ]
+  },
+  {
+   "id": "fcf_growth",
+   "title": "自由现金流持续增长",
+   "summary": "近五年自由现金流每年为正、多数年份增长且没有大幅回落。",
+   "criteria": [
+    "2021–2025 年简式自由现金流（经营活动现金流量净额 − 现金资本开支）每年为正",
+    "4 个同比中至少 3 个增长，任一年降幅不超过 20%，且 2025 年高于 2021 年",
+    "排名用 4 个同比增长率的中位数，避免单一年份的低基数主导排名",
+    "按公司整体金额计算，不按每股：A 股送转股会使未复权的每股数据失真"
+   ],
+   "sort": "按同比增长率中位数从高到低",
+   "concepts": [
+    "fcf",
+    "cfo",
+    "capex"
+   ],
+   "columns": [
+    {
+     "key": "fcf_last",
+     "label": "2025 年自由现金流",
+     "unit": "CNY_yuan"
+    },
+    {
+     "key": "fcf_growth",
+     "label": "同比增长率中位数",
+     "unit": "pct"
+    },
+    {
+     "key": "up_years",
+     "label": "同比增长年数",
+     "unit": "count"
+    },
+    {
+     "key": "market_cap",
+     "label": "2025 年末总市值",
+     "unit": "CNY_yuan"
+    }
+   ],
+   "trend": {
+    "label": "自由现金流",
+    "unit": "CNY_yuan"
+   },
+   "count": 3,
+   "rows": [
+    {
+     "ts_code": "T00001.SH",
+     "name": "示例甲",
+     "industry": "测试",
+     "values": {
+      "fcf_last": 20.0,
+      "fcf_growth": 0.17692307692307685,
+      "up_years": 4,
+      "market_cap": 90000000000.0
+     },
+     "trend": [
+      10.0,
+      12.0,
+      13.0,
+      15.0,
+      20.0
+     ]
+    },
+    {
+     "ts_code": "T00003.SZ",
+     "name": "示例丙",
+     "industry": "测试",
+     "values": {
+      "fcf_last": 20.0,
+      "fcf_growth": 0.17692307692307685,
+      "up_years": 4,
+      "market_cap": null
+     },
+     "trend": [
+      10.0,
+      12.0,
+      13.0,
+      15.0,
+      20.0
+     ]
+    },
+    {
+     "ts_code": "T00002.SZ",
+     "name": "示例乙",
+     "industry": "测试",
+     "values": {
+      "fcf_last": 13.0,
+      "fcf_growth": 0.08712121212121204,
+      "up_years": 3,
+      "market_cap": 90000000000.0
+     },
+     "trend": [
+      10.0,
+      9.0,
+      11.0,
+      12.0,
+      13.0
+     ]
+    }
+   ]
+  },
+  {
+   "id": "high_roe",
+   "title": "高且稳定的净资产收益率",
+   "summary": "近五年归母净资产收益率每年不低于 15%。",
+   "criteria": [
+    "2021–2025 年归母净资产收益率（归母净利润 ÷ 平均归母权益）每年 ≥ 15%",
+    "平均归母权益为正；ROE 含财务杠杆的作用，可对照经营资产回报榜单"
+   ],
+   "sort": "按五年平均值从高到低",
+   "concepts": [
+    "roce",
+    "rotce",
+    "flev"
+   ],
+   "columns": [
+    {
+     "key": "roe_avg",
+     "label": "五年平均",
+     "unit": "pct"
+    },
+    {
+     "key": "roe_min",
+     "label": "五年最低",
+     "unit": "pct"
+    },
+    {
+     "key": "roe_last",
+     "label": "2025 年",
+     "unit": "pct"
+    },
+    {
+     "key": "market_cap",
+     "label": "2025 年末总市值",
+     "unit": "CNY_yuan"
+    }
+   ],
+   "trend": {
+    "label": "归母净资产收益率",
+    "unit": "pct"
+   },
+   "count": 3,
+   "rows": [
+    {
+     "ts_code": "T00003.SZ",
+     "name": "示例丙",
+     "industry": "测试",
+     "values": {
+      "roe_avg": 0.258,
+      "roe_min": 0.22,
+      "roe_last": 0.24,
+      "market_cap": null
+     },
+     "trend": [
+      0.25,
+      0.3,
+      0.28,
+      0.22,
+      0.24
+     ]
+    },
+    {
+     "ts_code": "T00001.SH",
+     "name": "示例甲",
+     "industry": "测试",
+     "values": {
+      "roe_avg": 0.2,
+      "roe_min": 0.2,
+      "roe_last": 0.2,
+      "market_cap": 90000000000.0
+     },
+     "trend": [
+      0.2,
+      0.2,
+      0.2,
+      0.2,
+      0.2
+     ]
+    },
+    {
+     "ts_code": "T00002.SZ",
+     "name": "示例乙",
+     "industry": "测试",
+     "values": {
+      "roe_avg": 0.2,
+      "roe_min": 0.2,
+      "roe_last": 0.2,
+      "market_cap": 90000000000.0
+     },
+     "trend": [
+      0.2,
+      0.2,
+      0.2,
+      0.2,
+      0.2
+     ]
+    }
+   ]
+  },
+  {
+   "id": "high_rnoa",
+   "title": "经营资产回报高",
+   "summary": "近五年净经营资产收益率每年不低于 20%（Penman 口径，剔除金融资产与负债）。",
+   "criteria": [
+    "2021–2025 年净经营资产收益率（税后经营收益 ÷ 平均净经营资产）每年 ≥ 20%",
+    "平均净经营资产每年为正；净经营资产很小的公司比率会很高，宜结合利润率与周转率阅读"
+   ],
+   "sort": "按五年中位数从高到低",
+   "concepts": [
+    "rnoa",
+    "opm",
+    "ato"
+   ],
+   "columns": [
+    {
+     "key": "rnoa_median",
+     "label": "五年中位数",
+     "unit": "pct"
+    },
+    {
+     "key": "rnoa_last",
+     "label": "2025 年",
+     "unit": "pct"
+    },
+    {
+     "key": "opm_last",
+     "label": "2025 年税后经营利润率",
+     "unit": "pct"
+    },
+    {
+     "key": "ato_last",
+     "label": "2025 年周转率",
+     "unit": "x"
+    }
+   ],
+   "trend": {
+    "label": "净经营资产收益率",
+    "unit": "pct"
+   },
+   "count": 3,
+   "rows": [
+    {
+     "ts_code": "T00001.SH",
+     "name": "示例甲",
+     "industry": "测试",
+     "values": {
+      "rnoa_median": 0.3,
+      "rnoa_last": 0.3,
+      "opm_last": 0.1,
+      "ato_last": 3.0
+     },
+     "trend": [
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3
+     ]
+    },
+    {
+     "ts_code": "T00002.SZ",
+     "name": "示例乙",
+     "industry": "测试",
+     "values": {
+      "rnoa_median": 0.3,
+      "rnoa_last": 0.3,
+      "opm_last": 0.1,
+      "ato_last": 3.0
+     },
+     "trend": [
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3
+     ]
+    },
+    {
+     "ts_code": "T00003.SZ",
+     "name": "示例丙",
+     "industry": "测试",
+     "values": {
+      "rnoa_median": 0.3,
+      "rnoa_last": 0.3,
+      "opm_last": 0.1,
+      "ato_last": 3.0
+     },
+     "trend": [
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cash_cycle",
+   "title": "先收款后付款",
+   "summary": "近五年现金循环周期每年为负，同时营业总收入增长。",
+   "criteria": [
+    "2021–2025 年现金循环周期（存货天数 ＋ 应收天数 − 应付天数）每年 < 0",
+    "2025 年营业总收入高于 2021 年",
+    "客户预收款不计入现金循环周期，另列扣除预收款后的天数",
+    "应付账款可能含工程及设备款；营业成本很低的公司应付天数偏大，天数宜与同业比较，故不按天数排名"
+   ],
+   "sort": "按 2025 年营业总收入从高到低",
+   "concepts": [
+    "ccc",
+    "dio",
+    "dso",
+    "dpo",
+    "advances"
+   ],
+   "columns": [
+    {
+     "key": "revenue_last",
+     "label": "2025 年营业总收入",
+     "unit": "CNY_yuan"
+    },
+    {
+     "key": "ccc_last",
+     "label": "2025 年",
+     "unit": "days"
+    },
+    {
+     "key": "ccc_net_last",
+     "label": "2025 年扣除客户预收款后",
+     "unit": "days"
+    },
+    {
+     "key": "revenue_cagr",
+     "label": "营业总收入 4 年复合增长率",
+     "unit": "pct"
+    }
+   ],
+   "trend": {
+    "label": "现金循环周期",
+    "unit": "days"
+   },
+   "count": 2,
+   "rows": [
+    {
+     "ts_code": "T00001.SH",
+     "name": "示例甲",
+     "industry": "测试",
+     "values": {
+      "revenue_last": 3000000000.0,
+      "ccc_last": -10.0,
+      "ccc_net_last": -30.0,
+      "revenue_cagr": 0.10668191970032148
+     },
+     "trend": [
+      -10.0,
+      -10.0,
+      -10.0,
+      -10.0,
+      -10.0
+     ]
+    },
+    {
+     "ts_code": "T00003.SZ",
+     "name": "示例丙",
+     "industry": "测试",
+     "values": {
+      "revenue_last": 3000000000.0,
+      "ccc_last": -10.0,
+      "ccc_net_last": -30.0,
+      "revenue_cagr": 0.10668191970032148
+     },
+     "trend": [
+      -10.0,
+      -10.0,
+      -10.0,
+      -10.0,
+      -10.0
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cash_quality",
+   "title": "利润含金量高",
+   "summary": "近五年净利润每年为正，且五年累计自由现金流不少于累计净利润。",
+   "criteria": [
+    "2021–2025 年合并净利润每年为正",
+    "五年累计自由现金流 ÷ 五年累计合并净利润 ≥ 100%",
+    "折旧摊销大、资本开支少的公司比率偏高；比率高不代表利润在增长"
+   ],
+   "sort": "按五年累计自由现金流从高到低",
+   "concepts": [
+    "fcf",
+    "cfo"
+   ],
+   "columns": [
+    {
+     "key": "fcf_sum",
+     "label": "五年累计自由现金流",
+     "unit": "CNY_yuan"
+    },
+    {
+     "key": "fcf_to_ni",
+     "label": "累计自由现金流 ÷ 累计净利润",
+     "unit": "pct"
+    },
+    {
+     "key": "cfo_to_ni",
+     "label": "累计经营现金流 ÷ 累计净利润",
+     "unit": "pct"
+    },
+    {
+     "key": "market_cap",
+     "label": "2025 年末总市值",
+     "unit": "CNY_yuan"
+    }
+   ],
+   "trend": {
+    "label": "自由现金流",
+    "unit": "CNY_yuan"
+   },
+   "count": 3,
+   "rows": [
+    {
+     "ts_code": "T00001.SH",
+     "name": "示例甲",
+     "industry": "测试",
+     "values": {
+      "fcf_sum": 70.0,
+      "fcf_to_ni": 1.75,
+      "cfo_to_ni": 2.275,
+      "market_cap": 90000000000.0
+     },
+     "trend": [
+      10.0,
+      12.0,
+      13.0,
+      15.0,
+      20.0
+     ]
+    },
+    {
+     "ts_code": "T00003.SZ",
+     "name": "示例丙",
+     "industry": "测试",
+     "values": {
+      "fcf_sum": 70.0,
+      "fcf_to_ni": 1.75,
+      "cfo_to_ni": 2.275,
+      "market_cap": null
+     },
+     "trend": [
+      10.0,
+      12.0,
+      13.0,
+      15.0,
+      20.0
+     ]
+    },
+    {
+     "ts_code": "T00002.SZ",
+     "name": "示例乙",
+     "industry": "测试",
+     "values": {
+      "fcf_sum": 55.0,
+      "fcf_to_ni": 1.375,
+      "cfo_to_ni": 2.275,
+      "market_cap": 90000000000.0
+     },
+     "trend": [
+      10.0,
+      9.0,
+      11.0,
+      12.0,
+      13.0
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,267 @@
+# Mapping: raw Tushare fields -> standardized concepts.
+# Editable. `class` is the DEFAULT Penman classification consumed by Module 3;
+# items whose economic classification is judgmental carry a `note` and are
+# meant to be overridden per company/analysis, not treated as truth.
+#
+# Classes (balance sheet): operating_asset, financial_asset,
+#   operating_liability, financial_obligation, equity, minority_interest,
+#   subtotal, presentation_combined (Tushare combined display fields that
+#   overlap granular fields — NEVER sum with them)
+# Classes (income): operating_income, operating_expense, financing, tax,
+#   subtotal, per_share, other_comprehensive, minority
+# Classes (cashflow): operating, investing, financing, fx, subtotal,
+#   supplemental (indirect-method reconciliation block)
+version: 1
+source: tushare
+unit: CNY_yuan
+
+balancesheet:
+  period_kind: point
+  fields:
+    # --- assets ---
+    money_cap:        {concept: cash_and_equivalents,        label_zh: 货币资金, class: financial_asset, note: "May contain operating cash; Penman split editable in Module 3"}
+    trad_asset:       {concept: trading_financial_assets,    label_zh: 交易性金融资产, class: financial_asset}
+    notes_receiv:     {concept: notes_receivable,            label_zh: 应收票据, class: operating_asset}
+    accounts_receiv:  {concept: accounts_receivable,         label_zh: 应收账款, class: operating_asset}
+    oth_receiv:       {concept: other_receivables,           label_zh: 其他应收款, class: operating_asset}
+    int_receiv:       {concept: interest_receivable,         label_zh: 应收利息, class: financial_asset}
+    prepayment:       {concept: prepayments,                 label_zh: 预付款项, class: operating_asset}
+    inventories:      {concept: inventory,                   label_zh: 存货, class: operating_asset}
+    nca_within_1y:    {concept: noncurrent_assets_due_1y,    label_zh: 一年内到期的非流动资产, class: financial_asset, note: judgmental}
+    receiv_financing: {concept: receivables_financing,       label_zh: 应收款项融资, class: operating_asset, note: "Receivables held for discounting/endorsement"}
+    contract_assets:  {concept: contract_assets,             label_zh: 合同资产, class: operating_asset}
+    div_receiv:       {concept: dividends_receivable,        label_zh: 应收股利, class: financial_asset}
+    hfs_assets:       {concept: held_for_sale_assets,        label_zh: 持有待售资产, class: operating_asset, note: judgmental}
+    sett_rsrv:        {concept: settlement_reserves,         label_zh: 结算备付金, class: financial_asset, note: "Finance subsidiary item"}
+    depos_in_oth_bfi: {concept: deposits_with_banks,         label_zh: 存放同业款项, class: financial_asset, note: "Finance subsidiary item"}
+    deriv_assets:     {concept: derivative_assets,           label_zh: 衍生金融资产, class: financial_asset}
+    cash_reser_cb:    {concept: cash_and_central_bank_deposits, label_zh: 现金及存放中央银行款项, class: financial_asset, note: "Finance/insurance-subsidiary line in a comp_type 1 group; mapped 2026-11-21 after an all-A-share check showed it alone explained the R residual where populated"}
+    refund_depos:     {concept: refundable_deposits_placed,  label_zh: 存出保证金, class: financial_asset, note: "Finance/insurance-subsidiary line in a comp_type 1 group; mapped 2026-11-21 after an all-A-share check showed it alone explained the R residual where populated"}
+    cost_fin_assets:  {concept: amortised_cost_financial_assets, label_zh: 以摊余成本计量的金融资产, class: financial_asset, note: "Finance/insurance-subsidiary line in a comp_type 1 group; mapped 2026-11-21 after an all-A-share check showed it alone explained the R residual where populated"}
+    premium_receiv:   {concept: premiums_receivable,         label_zh: 应收保费, class: operating_asset, note: "Finance/insurance-subsidiary line in a comp_type 1 group; mapped 2026-11-21 after an all-A-share check showed it alone explained the R residual where populated"}
+    reinsur_receiv:   {concept: reinsurance_receivable,      label_zh: 应收分保账款, class: operating_asset, note: "Finance/insurance-subsidiary line in a comp_type 1 group; mapped 2026-11-21 after an all-A-share check showed it alone explained the R residual where populated"}
+    reinsur_res_receiv: {concept: reinsurance_reserves_receivable, label_zh: 应收分保合同准备金, class: operating_asset, note: "Finance/insurance-subsidiary line in a comp_type 1 group; mapped 2026-11-21 after an all-A-share check showed it alone explained the R residual where populated"}
+    lending_funds:    {concept: lending_funds,               label_zh: 融出资金, class: financial_asset, note: "Finance subsidiary item"}
+    prec_metals:      {concept: precious_metals,             label_zh: 贵金属, class: financial_asset}
+    loanto_oth_bank_fi: {concept: interbank_lending,         label_zh: 拆出资金, class: financial_asset, note: "Finance subsidiary item"}
+    pur_resale_fa:    {concept: reverse_repo_assets,         label_zh: 买入返售金融资产, class: financial_asset, note: "Finance subsidiary item"}
+    decr_in_disbur:   {concept: loans_and_advances_issued,   label_zh: 发放贷款及垫款, class: financial_asset, note: "Finance subsidiary item; judgmental"}
+    oth_cur_assets:   {concept: other_current_assets,        label_zh: 其他流动资产, class: operating_asset, note: "Often holds wealth-management products; judgmental"}
+    total_cur_assets: {concept: total_current_assets,        label_zh: 流动资产合计, class: subtotal}
+    fa_avail_for_sale: {concept: afs_financial_assets,       label_zh: 可供出售金融资产, class: financial_asset}
+    htm_invest:       {concept: htm_investments,             label_zh: 持有至到期投资, class: financial_asset}
+    debt_invest:      {concept: debt_investments,            label_zh: 债权投资, class: financial_asset}
+    oth_debt_invest:  {concept: other_debt_investments,      label_zh: 其他债权投资, class: financial_asset}
+    lt_eqt_invest:    {concept: long_term_equity_investments, label_zh: 长期股权投资, class: operating_asset, note: "Associates/JVs; judgmental"}
+    oth_eq_invest:    {concept: other_equity_investments,    label_zh: 其他权益工具投资, class: financial_asset}
+    oth_illiq_fin_assets: {concept: other_illiquid_financial_assets, label_zh: 其他非流动金融资产, class: financial_asset}
+    oth_eq_ppbond:    {concept: perpetual_bonds_in_equity,   label_zh: 其他权益工具-永续债, class: equity, note: "其中项：发行人计入权益的永续债，已含在其他权益工具中，不是持有的金融资产（000860.SZ 2016–2018 曾因按资产计入导致 R1 差额 10 亿元）"}
+    time_deposits:    {concept: time_deposits,               label_zh: 定期存款, class: financial_asset}
+    lt_rec:           {concept: long_term_receivables,       label_zh: 长期应收款, class: operating_asset, note: judgmental}
+    use_right_assets: {concept: right_of_use_assets,         label_zh: 使用权资产, class: operating_asset}
+    goodwill:         {concept: goodwill,                    label_zh: 商誉, class: operating_asset}
+    produc_bio_assets: {concept: productive_biological_assets, label_zh: 生产性生物资产, class: operating_asset}
+    oil_and_gas_assets: {concept: oil_and_gas_assets,        label_zh: 油气资产, class: operating_asset}
+    oth_assets:       {concept: other_assets,                label_zh: 其他资产, class: operating_asset, note: judgmental}
+    invest_real_estate: {concept: investment_real_estate,    label_zh: 投资性房地产, class: financial_asset, note: judgmental}
+    fix_assets:       {concept: ppe,                         label_zh: 固定资产, class: operating_asset}
+    cip:              {concept: construction_in_progress,    label_zh: 在建工程, class: operating_asset}
+    const_materials:  {concept: construction_materials,      label_zh: 工程物资, class: operating_asset}
+    fixed_assets_disp: {concept: assets_held_for_disposal,   label_zh: 固定资产清理, class: operating_asset}
+    intan_assets:     {concept: intangible_assets,           label_zh: 无形资产, class: operating_asset}
+    r_and_d:          {concept: development_expenditure,     label_zh: 开发支出, class: operating_asset}
+    lt_amor_exp:      {concept: long_term_deferred_expenses, label_zh: 长期待摊费用, class: operating_asset}
+    defer_tax_assets: {concept: deferred_tax_assets,         label_zh: 递延所得税资产, class: operating_asset}
+    oth_nca:          {concept: other_noncurrent_assets,     label_zh: 其他非流动资产, class: operating_asset}
+    total_nca:        {concept: total_noncurrent_assets,     label_zh: 非流动资产合计, class: subtotal}
+    total_assets:     {concept: total_assets,                label_zh: 资产总计, class: subtotal}
+    # --- liabilities ---
+    st_borr:          {concept: short_term_borrowings,       label_zh: 短期借款, class: financial_obligation}
+    cb_borr:          {concept: central_bank_borrowings,     label_zh: 向中央银行借款, class: financial_obligation}
+    loan_oth_bank:    {concept: interbank_borrowings,        label_zh: 拆入资金, class: financial_obligation, note: "Finance subsidiary item"}
+    trading_fl:       {concept: trading_financial_liabilities, label_zh: 交易性金融负债, class: financial_obligation}
+    deriv_liab:       {concept: derivative_liabilities,      label_zh: 衍生金融负债, class: financial_obligation, note: "Mirrors deriv_assets (financial); unmapped before 2026-11-21 → R2/R3 residual for 659 companies"}
+    acting_trading_sec: {concept: client_brokerage_deposits,  label_zh: 代理买卖证券款, class: financial_obligation, note: "Finance/insurance-subsidiary line in a comp_type 1 group; mapped 2026-11-21 after an all-A-share check showed it alone explained the R residual where populated; client cash sits in 货币资金 (financial), so the liability offsets it in NFO"}
+    rsrv_insur_cont:  {concept: insurance_contract_reserves, label_zh: 保险合同准备金, class: operating_liability, note: "Finance/insurance-subsidiary line in a comp_type 1 group; mapped 2026-11-21 after an all-A-share check showed it alone explained the R residual where populated; insurance float, judgmental"}
+    payable_to_reinsurer: {concept: reinsurance_payable,     label_zh: 应付分保账款, class: operating_liability, note: "Finance/insurance-subsidiary line in a comp_type 1 group; mapped 2026-11-21 after an all-A-share check showed it alone explained the R residual where populated"}
+    sold_for_repur_fa: {concept: repo_liabilities,           label_zh: 卖出回购金融资产款, class: financial_obligation}
+    notes_payable:    {concept: notes_payable,               label_zh: 应付票据, class: operating_liability}
+    comm_payable:     {concept: fees_commission_payable,     label_zh: 应付手续费及佣金, class: operating_liability}
+    acc_exp:          {concept: accrued_expenses,            label_zh: 预提费用, class: operating_liability}
+    deferred_inc:     {concept: deferred_income_current,     label_zh: 递延收益-流动负债, class: operating_liability}
+    st_bonds_payable: {concept: short_term_bonds_payable,    label_zh: 应付短期债券, class: financial_obligation}
+    hfs_sales:        {concept: held_for_sale_liabilities,   label_zh: 持有待售负债, class: operating_liability, note: judgmental}
+    depos_ib_deposits: {concept: deposits_taken,             label_zh: 吸收存款及同业存放, class: financial_obligation, note: "Finance subsidiary deposits; highly judgmental"}
+    acct_payable:     {concept: accounts_payable,            label_zh: 应付账款, class: operating_liability}
+    adv_receipts:     {concept: advances_from_customers,     label_zh: 预收款项, class: operating_liability}
+    contract_liab:    {concept: contract_liabilities,        label_zh: 合同负债, class: operating_liability}
+    payroll_payable:  {concept: employee_benefits_payable,   label_zh: 应付职工薪酬, class: operating_liability}
+    taxes_payable:    {concept: taxes_payable,               label_zh: 应交税费, class: operating_liability}
+    int_payable:      {concept: interest_payable,            label_zh: 应付利息, class: financial_obligation}
+    div_payable:      {concept: dividends_payable,           label_zh: 应付股利, class: financial_obligation}
+    oth_payable:      {concept: other_payables,              label_zh: 其他应付款, class: operating_liability, note: judgmental}
+    non_cur_liab_due_1y: {concept: current_portion_lt_debt,  label_zh: 一年内到期的非流动负债, class: financial_obligation}
+    oth_cur_liab:     {concept: other_current_liabilities,   label_zh: 其他流动负债, class: operating_liability}
+    total_cur_liab:   {concept: total_current_liabilities,   label_zh: 流动负债合计, class: subtotal}
+    specific_payables: {concept: specific_payables,          label_zh: 专项应付款, class: operating_liability}
+    defer_tax_liab:   {concept: deferred_tax_liabilities,    label_zh: 递延所得税负债, class: operating_liability}
+    defer_inc_non_cur_liab: {concept: deferred_income_noncurrent, label_zh: 递延收益-非流动负债, class: operating_liability}
+    lt_borr:          {concept: long_term_borrowings,        label_zh: 长期借款, class: financial_obligation}
+    bond_payable:     {concept: bonds_payable,               label_zh: 应付债券, class: financial_obligation}
+    lease_liab:       {concept: lease_liabilities,           label_zh: 租赁负债, class: financial_obligation, note: "IFRS16-style; Penman treatment judgmental"}
+    lt_payable:       {concept: long_term_payables,          label_zh: 长期应付款, class: operating_liability, note: judgmental}
+    estimated_liab:   {concept: provisions,                  label_zh: 预计负债, class: operating_liability}
+    lt_payroll_payable: {concept: long_term_employee_benefits, label_zh: 长期应付职工薪酬, class: operating_liability}
+    oth_ncl:          {concept: other_noncurrent_liabilities, label_zh: 其他非流动负债, class: operating_liability, note: judgmental}
+    oth_liab:         {concept: other_liabilities,           label_zh: 其他负债, class: operating_liability, note: judgmental}
+    total_ncl:        {concept: total_noncurrent_liabilities, label_zh: 非流动负债合计, class: subtotal}
+    total_liab:       {concept: total_liabilities,           label_zh: 负债合计, class: subtotal}
+    # --- equity ---
+    total_share:      {concept: share_capital,               label_zh: 股本, class: equity}
+    cap_rese:         {concept: capital_reserve,             label_zh: 资本公积, class: equity}
+    treasury_share:   {concept: treasury_shares,             label_zh: 库存股, class: equity}
+    surplus_rese:     {concept: surplus_reserve,             label_zh: 盈余公积, class: equity}
+    special_rese:     {concept: special_reserve,             label_zh: 专项储备, class: equity}
+    forex_differ:     {concept: fx_translation_difference,   label_zh: 外币报表折算差额, class: equity}
+    oth_eqt_tools:    {concept: other_equity_instruments,    label_zh: 其他权益工具, class: equity, note: "Perpetuals/preferred; financing-equity hybrid, judgmental"}
+    oth_eqt_tools_p_shr: {concept: preferred_shares,         label_zh: 其他权益工具-优先股, class: equity, note: judgmental}
+    ordin_risk_reser: {concept: general_risk_reserve,        label_zh: 一般风险准备, class: equity}
+    undistr_porfit:   {concept: retained_earnings,           label_zh: 未分配利润, class: equity}
+    oth_comp_income:  {concept: accumulated_oci,             label_zh: 其他综合收益, class: equity}
+    minority_int:     {concept: minority_interests,          label_zh: 少数股东权益, class: minority_interest}
+    total_hldr_eqy_exc_min_int: {concept: parent_equity,     label_zh: 归母股东权益合计, class: subtotal}
+    total_hldr_eqy_inc_min_int: {concept: total_equity,      label_zh: 股东权益合计, class: subtotal}
+    total_liab_hldr_eqy: {concept: total_liab_and_equity,    label_zh: 负债及股东权益总计, class: subtotal}
+    # --- Tushare combined presentation fields (overlap granular ones) ---
+    accounts_receiv_bill: {concept: receivables_combined,    label_zh: 应收票据及应收账款, class: presentation_combined}
+    accounts_pay:     {concept: payables_combined,           label_zh: 应付票据及应付账款, class: presentation_combined}
+    oth_rcv_total:    {concept: other_receivables_combined,  label_zh: 其他应收款合计, class: presentation_combined}
+    fix_assets_total: {concept: ppe_combined,                label_zh: 固定资产合计, class: presentation_combined}
+    cip_total:        {concept: cip_combined,                label_zh: 在建工程合计, class: presentation_combined}
+    oth_pay_total:    {concept: other_payables_combined,     label_zh: 其他应付款合计, class: presentation_combined}
+    long_pay_total:   {concept: long_term_payables_combined, label_zh: 长期应付款合计, class: presentation_combined}
+
+income:
+  period_kind: cumulative
+  fields:
+    total_revenue:    {concept: total_revenue,               label_zh: 营业总收入, class: subtotal}
+    revenue:          {concept: revenue,                     label_zh: 营业收入, class: operating_income}
+    int_income:       {concept: interest_income_fin_sub,     label_zh: 利息收入, class: operating_income, note: "Finance subsidiary revenue line; judgmental"}
+    comm_income:      {concept: fee_commission_income,       label_zh: 手续费及佣金收入, class: operating_income, note: "Finance subsidiary item"}
+    total_cogs:       {concept: total_operating_costs,       label_zh: 营业总成本, class: subtotal}
+    oper_cost:        {concept: cost_of_goods_sold,          label_zh: 营业成本, class: operating_expense}
+    int_exp:          {concept: interest_expense_fin_sub,    label_zh: 利息支出, class: operating_expense, note: "Finance subsidiary cost line; judgmental"}
+    comm_exp:         {concept: fee_commission_expense,      label_zh: 手续费及佣金支出, class: operating_expense}
+    biz_tax_surchg:   {concept: taxes_and_surcharges,        label_zh: 税金及附加, class: operating_expense}
+    sell_exp:         {concept: selling_expenses,            label_zh: 销售费用, class: operating_expense}
+    admin_exp:        {concept: admin_expenses,              label_zh: 管理费用, class: operating_expense}
+    rd_exp:           {concept: rd_expenses,                 label_zh: 研发费用, class: operating_expense}
+    fin_exp:          {concept: net_finance_expense,         label_zh: 财务费用, class: financing}
+    fin_exp_int_exp:  {concept: finance_interest_expense,    label_zh: 财务费用-利息费用, class: financing}
+    fin_exp_int_inc:  {concept: finance_interest_income,     label_zh: 财务费用-利息收入, class: financing}
+    assets_impair_loss: {concept: asset_impairment_loss,     label_zh: 资产减值损失, class: operating_expense, note: "Usually nonrecurring; flag in Module 3"}
+    credit_impa_loss: {concept: credit_impairment_loss,      label_zh: 信用减值损失, class: operating_expense, note: "Sign convention verified empirically; nonrecurring-ish"}
+    oth_impair_loss_assets: {concept: other_asset_impairment_loss, label_zh: 其他资产减值损失, class: operating_expense, note: nonrecurring}
+    oth_income:       {concept: other_income_grants,         label_zh: 其他收益, class: operating_income, note: "Mostly government grants; recurring-ish, judgmental"}
+    asset_disp_income: {concept: asset_disposal_income,      label_zh: 资产处置收益, class: operating_income, note: nonrecurring}
+    net_expo_hedging_benefits: {concept: net_hedging_income, label_zh: 净敞口套期收益, class: financing, note: judgmental}
+    forex_gain:       {concept: fx_gain,                     label_zh: 汇兑收益, class: financing, note: judgmental}
+    oth_b_income:     {concept: other_business_income,       label_zh: 其他业务收入, class: operating_income}
+    prem_earned:      {concept: premiums_earned,             label_zh: 已赚保费, class: operating_income, note: "Insurance item"}
+    reser_insur_liab: {concept: insurance_reserve_provision, label_zh: 提取保险合同准备金净额, class: operating_expense, note: "Finance/insurance-subsidiary line in a comp_type 1 group; mapped 2026-11-21 after an all-A-share check showed it alone explained the R residual where populated; part of 营业总成本"}
+    end_net_profit:   {concept: discontinued_net_income,     label_zh: 终止经营净利润, class: subtotal}
+    fv_value_chg_gain: {concept: fair_value_change_gain,     label_zh: 公允价值变动收益, class: financing, note: judgmental}
+    invest_income:    {concept: investment_income,           label_zh: 投资收益, class: financing, note: "Judgmental; associates' income is operating under Penman"}
+    ass_invest_income: {concept: associate_investment_income, label_zh: 对联营合营企业的投资收益, class: operating_income, note: judgmental}
+    operate_profit:   {concept: operating_profit_reported,   label_zh: 营业利润, class: subtotal}
+    non_oper_income:  {concept: non_operating_income,        label_zh: 营业外收入, class: operating_income, note: "Nonrecurring; separated in Module 3"}
+    non_oper_exp:     {concept: non_operating_expenses,      label_zh: 营业外支出, class: operating_expense, note: "Nonrecurring; separated in Module 3"}
+    nca_disploss:     {concept: noncurrent_asset_disposal_loss, label_zh: 非流动资产处置损失, class: operating_expense, note: nonrecurring}
+    total_profit:     {concept: pretax_profit,               label_zh: 利润总额, class: subtotal}
+    income_tax:       {concept: income_tax_expense,          label_zh: 所得税费用, class: tax}
+    n_income:         {concept: net_income_total,            label_zh: 净利润, class: subtotal}
+    n_income_attr_p:  {concept: net_income_parent,           label_zh: 归母净利润, class: subtotal}
+    minority_gain:    {concept: minority_income,             label_zh: 少数股东损益, class: minority}
+    continued_net_profit: {concept: continuing_net_income,   label_zh: 持续经营净利润, class: subtotal}
+    oth_compr_income: {concept: other_comprehensive_income,  label_zh: 其他综合收益, class: other_comprehensive}
+    t_compr_income:   {concept: total_comprehensive_income,  label_zh: 综合收益总额, class: subtotal}
+    compr_inc_attr_p: {concept: comprehensive_income_parent, label_zh: 归母综合收益, class: subtotal}
+    compr_inc_attr_m_s: {concept: comprehensive_income_minority, label_zh: 少数股东综合收益, class: minority}
+    basic_eps:        {concept: basic_eps,                   label_zh: 基本每股收益, class: per_share}
+    diluted_eps:      {concept: diluted_eps,                 label_zh: 稀释每股收益, class: per_share}
+    ebit:             {concept: ebit_vendor,                 label_zh: 息税前利润(供应商计算), class: subtotal, note: "Vendor-calculated, not reported"}
+    ebitda:           {concept: ebitda_vendor,               label_zh: EBITDA(供应商计算), class: subtotal, note: "Vendor-calculated, not reported"}
+
+cashflow:
+  period_kind: cumulative
+  fields:
+    # operating
+    c_fr_sale_sg:     {concept: cash_received_from_sales,    label_zh: 销售商品提供劳务收到的现金, class: operating}
+    recp_tax_rends:   {concept: tax_refunds_received,        label_zh: 收到的税费返还, class: operating}
+    n_depos_incr_fi:  {concept: net_increase_deposits_taken, label_zh: 客户存款和同业存放款项净增加额, class: operating, note: "Finance subsidiary item"}
+    ifc_cash_incr:    {concept: net_interest_fee_cash,       label_zh: 收取利息和手续费净增加额, class: operating, note: "Finance subsidiary item"}
+    n_incr_clt_loan_adv: {concept: net_increase_loans_issued, label_zh: 客户贷款及垫款净增加额, class: operating, note: "Finance subsidiary item"}
+    n_incr_dep_cbob:  {concept: net_increase_due_from_banks, label_zh: 存放央行和同业款项净增加额, class: operating, note: "Finance subsidiary item"}
+    pay_handling_chrg: {concept: fees_paid,                  label_zh: 支付手续费的现金, class: operating}
+    c_fr_oth_operate_a: {concept: other_operating_cash_received, label_zh: 收到其他与经营活动有关的现金, class: operating}
+    c_inf_fr_operate_a: {concept: operating_cash_inflows,    label_zh: 经营活动现金流入小计, class: subtotal}
+    c_paid_goods_s:   {concept: cash_paid_for_goods,         label_zh: 购买商品接受劳务支付的现金, class: operating}
+    c_paid_to_for_empl: {concept: cash_paid_to_employees,    label_zh: 支付给职工的现金, class: operating}
+    c_paid_for_taxes: {concept: cash_paid_for_taxes,         label_zh: 支付的各项税费, class: operating}
+    oth_cash_pay_oper_act: {concept: other_operating_cash_paid, label_zh: 支付其他与经营活动有关的现金, class: operating}
+    st_cash_out_act:  {concept: operating_cash_outflows,     label_zh: 经营活动现金流出小计, class: subtotal}
+    n_cashflow_act:   {concept: cfo,                         label_zh: 经营活动产生的现金流量净额, class: subtotal}
+    # investing
+    c_disp_withdrwl_invest: {concept: cash_from_investment_disposals, label_zh: 收回投资收到的现金, class: investing}
+    c_recp_return_invest: {concept: cash_from_investment_returns, label_zh: 取得投资收益收到的现金, class: investing}
+    n_recp_disp_fiolta: {concept: cash_from_asset_disposals, label_zh: 处置固定无形长期资产收回的现金净额, class: investing}
+    oth_recp_ral_inv_act: {concept: other_investing_cash_received, label_zh: 收到其他与投资活动有关的现金, class: investing}
+    stot_inflows_inv_act: {concept: investing_cash_inflows,  label_zh: 投资活动现金流入小计, class: subtotal}
+    c_pay_acq_const_fiolta: {concept: capex_paid,            label_zh: 购建固定无形长期资产支付的现金, class: investing}
+    c_paid_invest:    {concept: cash_paid_for_investments,   label_zh: 投资支付的现金, class: investing}
+    oth_pay_ral_inv_act: {concept: other_investing_cash_paid, label_zh: 支付其他与投资活动有关的现金, class: investing}
+    stot_out_inv_act: {concept: investing_cash_outflows,     label_zh: 投资活动现金流出小计, class: subtotal}
+    n_cashflow_inv_act: {concept: cfi,                       label_zh: 投资活动产生的现金流量净额, class: subtotal}
+    # financing
+    c_recp_borrow:    {concept: cash_from_borrowings,        label_zh: 取得借款收到的现金, class: financing}
+    c_recp_cap_contrib: {concept: cash_from_equity_issuance, label_zh: 吸收投资收到的现金, class: financing}
+    incl_cash_rec_saims: {concept: minority_equity_contributions, label_zh: 其中子公司吸收少数股东投资, class: financing}
+    oth_cash_recp_ral_fnc_act: {concept: other_financing_cash_received, label_zh: 收到其他与筹资活动有关的现金, class: financing}
+    stot_cash_in_fnc_act: {concept: financing_cash_inflows,  label_zh: 筹资活动现金流入小计, class: subtotal}
+    c_prepay_amt_borr: {concept: debt_repayments,            label_zh: 偿还债务支付的现金, class: financing}
+    c_pay_dist_dpcp_int_exp: {concept: dividends_and_interest_paid, label_zh: 分配股利利润或偿付利息支付的现金, class: financing}
+    incl_dvd_profit_paid_sc_ms: {concept: dividends_paid_to_minority, label_zh: 其中子公司支付少数股东的股利, class: financing}
+    oth_cashpay_ral_fnc_act: {concept: other_financing_cash_paid, label_zh: 支付其他与筹资活动有关的现金, class: financing}
+    stot_cashout_fnc_act: {concept: financing_cash_outflows, label_zh: 筹资活动现金流出小计, class: subtotal}
+    n_cash_flows_fnc_act: {concept: cff,                     label_zh: 筹资活动产生的现金流量净额, class: subtotal}
+    # fx and totals
+    eff_fx_flu_cash:  {concept: fx_effect_on_cash,           label_zh: 汇率变动对现金的影响, class: fx}
+    n_incr_cash_cash_equ: {concept: net_increase_in_cash,    label_zh: 现金及现金等价物净增加额, class: subtotal}
+    c_cash_equ_beg_period: {concept: cash_beginning,         label_zh: 期初现金及现金等价物余额, class: subtotal}
+    c_cash_equ_end_period: {concept: cash_ending,            label_zh: 期末现金及现金等价物余额, class: subtotal}
+    free_cashflow:    {concept: fcf_vendor,                  label_zh: 自由现金流(供应商计算), class: subtotal, note: "Vendor-calculated, definition opaque — do not use analytically"}
+    # supplemental (indirect method reconciliation)
+    net_profit:       {concept: supp_net_profit,             label_zh: 净利润(补充资料), class: supplemental}
+    finan_exp:        {concept: supp_finance_expense,        label_zh: 财务费用(补充资料), class: supplemental}
+    prov_depr_assets: {concept: supp_impairment_provisions,  label_zh: 资产减值准备, class: supplemental}
+    depr_fa_coga_dpba: {concept: supp_depreciation,          label_zh: 固定资产折旧等, class: supplemental}
+    amort_intang_assets: {concept: supp_intangible_amortization, label_zh: 无形资产摊销, class: supplemental}
+    lt_amort_deferred_exp: {concept: supp_lt_deferred_amortization, label_zh: 长期待摊费用摊销, class: supplemental}
+    use_right_asset_dep: {concept: supp_rou_asset_depreciation, label_zh: 使用权资产折旧, class: supplemental}
+    loss_disp_fiolta: {concept: supp_asset_disposal_loss,    label_zh: 处置资产的损失, class: supplemental}
+    loss_scr_fa:      {concept: supp_asset_writeoff_loss,    label_zh: 固定资产报废损失, class: supplemental}
+    loss_fv_chg:      {concept: supp_fair_value_loss,        label_zh: 公允价值变动损失, class: supplemental}
+    invest_loss:      {concept: supp_investment_loss,        label_zh: 投资损失, class: supplemental}
+    credit_impa_loss: {concept: supp_credit_impairment_loss, label_zh: 信用减值损失, class: supplemental}
+    decr_def_inc_tax_assets: {concept: supp_deferred_tax_asset_decrease, label_zh: 递延所得税资产减少, class: supplemental}
+    incr_def_inc_tax_liab: {concept: supp_deferred_tax_liab_increase, label_zh: 递延所得税负债增加, class: supplemental}
+    decr_inventories: {concept: supp_inventory_decrease,     label_zh: 存货的减少, class: supplemental}
+    decr_oper_payable: {concept: supp_operating_receivables_decrease, label_zh: 经营性应收项目的减少, class: supplemental}
+    incr_oper_payable: {concept: supp_operating_payables_increase, label_zh: 经营性应付项目的增加, class: supplemental}
+    im_net_cashflow_oper_act: {concept: supp_cfo_indirect,   label_zh: 经营活动现金流量净额(间接法), class: supplemental}
+    im_n_incr_cash_equ: {concept: supp_net_cash_increase,    label_zh: 现金净增加额(补充资料), class: supplemental}
+    end_bal_cash:     {concept: supp_cash_ending,            label_zh: 现金的期末余额, class: supplemental}
+    beg_bal_cash:     {concept: supp_cash_beginning,         label_zh: 现金的期初余额, class: supplemental}
+    end_bal_cash_equ: {concept: supp_cash_equivalents_ending, label_zh: 现金等价物的期末余额, class: supplemental}
+    beg_bal_cash_equ: {concept: supp_cash_equivalents_beginning, label_zh: 现金等价物的期初余额, class: supplemental}
+    net_dism_capital_add: {concept: supp_net_capital_disposal, label_zh: 处置子公司收到的现金净额, class: supplemental}

@@ -1,0 +1,22 @@
+# Per-company classification overrides for Penman reformulation.
+# Keyed by ts_code; each entry reassigns a concept's class with a reason.
+# These are ANALYTICAL JUDGMENTS, recorded and auditable — edit freely.
+#
+# Example:
+# 600519.SH:
+#   balancesheet:
+#     deposits_taken:
+#       class: operating_liability
+#       reason: >
+#         Treat finance-subsidiary deposits as operating because they arise
+#         from distributor/group settlement activity rather than discretionary
+#         financing. Default is financial_obligation.
+#
+
+600519.SH:
+  income_sign_by_period:
+    "20190331":
+      credit_impairment_loss:
+        sign: -1
+        reason: 贵州茅台2019年一季报第13–14页在营业总成本中披露信用减值损失，负值为转回，计算营业利润时作减项。
+        source: https://www.moutaichina.com/uploadfile/2019/0425/20190425082635188.pdf

@@ -1,0 +1,1067 @@
+[
+  {
+    "id": "penman-valuation",
+    "title": "Penman 估值论文导读",
+    "category": "价值创造与估值",
+    "aliases": [
+      "Stephen H. Penman",
+      "What Matters in Company Valuation",
+      "佩曼",
+      "盈利",
+      "综合收益",
+      "股利"
+    ],
+    "definition": "Stephen H. Penman 在《What Matters in Company Valuation: Earnings, Residual Earnings, Dividends?》中比较股利、自由现金流、账面价值和收益如何用来估值。",
+    "formula": "归母权益价值＝期初归母权益账面价值＋未来剩余权益收益现值；剩余权益收益＝归母综合收益−权益必要报酬率×期初归母权益。",
+    "interpretation": "原文第 8–10 页说明重构报表及干净盈余条件，第 12–14 页比较自由现金流与投资支出，第 14–16 页推导剩余收益和异常盈利增长估值。页码采用论文页脚标注。",
+    "convention": "项目用论文核对报表勾稽、权益剩余收益和 AEG。经营剩余收益永续增长模型、经营与融资分类、税率、资本基数和营运资本周转口径均为项目的具体实现。",
+    "caveat": "年末市值与同年年报搭配属于事后分析。期初资本、综合收益或适用分母缺失时，相应指标保留空值。",
+    "related": [
+      "noa",
+      "reformulation",
+      "fcf",
+      "equity-re",
+      "aeg",
+      "valuation"
+    ],
+    "views": [
+      "map",
+      "value",
+      "valuation"
+    ],
+    "sources": [
+      "penman-valuation"
+    ]
+  },
+  {
+    "id": "reformulation",
+    "title": "经营与融资划分（Penman）",
+    "category": "资本与分类",
+    "aliases": [
+      "Penman",
+      "reformulation",
+      "经营与融资",
+      "重构",
+      "Operating vs financing",
+      "Financial statements are regrouped by economic role: running the business versus funding it or holding financial investments."
+    ],
+    "definition": "按经济用途重组报表：一部分用于经营业务，另一部分用于筹资或持有金融投资。",
+    "formula": "资产＝经营资产（OA · Operating Assets）＋金融资产（FA · Financial Assets）；负债＝经营负债（OL · Operating Liabilities）＋金融负债（FO · Financial Obligations）",
+    "interpretation": "应付账款为经营提供资金，借款属于融资。将两者分开，有助于区分经营表现与资金结构。",
+    "convention": "采用明确的默认分类和公司专属调整，并处理合并列报科目与明细科目的重叠。",
+    "caveat": "货币资金、租赁及财务公司余额的分类需要判断；分类变化会影响净经营资产和收益率，即使报表利润不变。",
+    "related": [
+      "noa",
+      "nfo",
+      "oi",
+      "data-quality"
+    ],
+    "views": [
+      "map",
+      "tree"
+    ],
+    "sources": [
+      "penman-valuation",
+      "penman"
+    ]
+  },
+  {
+    "id": "noa",
+    "title": "净经营资产（NOA · Net Operating Assets）",
+    "category": "资本与分类",
+    "aliases": [
+      "operating capital",
+      "invested capital",
+      "净经营资产",
+      "NOA · Net operating assets",
+      "The book capital committed to operations after deducting operating liabilities supplied by customers, suppliers and others."
+    ],
+    "definition": "经营资产扣除客户、供应商等提供的经营负债后，实际占用的账面经营资本。",
+    "formula": "净经营资产（NOA · Net Operating Assets）＝经营资产（OA · Operating Assets）－经营负债（OL · Operating Liabilities）",
+    "interpretation": "存货和固定资产增加资本占用，客户预收款和应付账款减少资本占用。应结合收入与收益解读变动。",
+    "convention": "资本图表采用年末余额；收益率采用明确标注的平均或期初资本基数。",
+    "caveat": "净经营资产为负或很小时，收益率可能失去通常的经济含义，需结合提示解读。",
+    "related": [
+      "reformulation",
+      "ato",
+      "rnoa",
+      "owc",
+      "penman-valuation"
+    ],
+    "views": [
+      "map",
+      "capital"
+    ],
+    "sources": [
+      "penman-valuation"
+    ]
+  },
+  {
+    "id": "nfo",
+    "title": "净金融负债（NFO · Net Financial Obligations）",
+    "category": "资本与分类",
+    "aliases": [
+      "net debt",
+      "net financial assets",
+      "NFA",
+      "净金融负债",
+      "NFO · Net financial obligations",
+      "Financial obligations remaining after financial assets are deducted."
+    ],
+    "definition": "金融负债扣除金融资产后的净额。",
+    "formula": "净金融负债（NFO · Net Financial Obligations）＝金融负债（FO · Financial Obligations）－金融资产（FA · Financial Assets）",
+    "interpretation": "负值表示持有净金融资产。在经营价值转为股权价值时，减去负的净金融负债相当于加回净金融资产。",
+    "convention": "货币资金及金融投资按当前分析分类列入金融资产，公司专属调整另有记录。",
+    "caveat": "估值桥按账面值计入，不代表每项金融资产的市场价值或可分配金额。",
+    "related": [
+      "noa",
+      "equity",
+      "flev",
+      "nbc"
+    ],
+    "views": [
+      "map",
+      "capital",
+      "valuation"
+    ],
+    "sources": [
+      "penman-valuation"
+    ]
+  },
+  {
+    "id": "equity",
+    "title": "归母权益与少数股东权益（CSE · Common Shareholders' Equity／MI · Minority Interest）",
+    "category": "资本与分类",
+    "aliases": [
+      "CSE",
+      "TE",
+      "MI",
+      "common shareholders equity",
+      "少数股东权益",
+      "归母权益",
+      "Equity & minority interests",
+      "Parent common equity belongs to the parent shareholders; total equity also includes minority interests in consolidated subsidiaries."
+    ],
+    "definition": "归属于母公司所有者权益属于母公司股东；合并所有者权益还包括少数股东权益。",
+    "formula": "合并权益（TE · Total Equity）＝净经营资产（NOA）－净金融负债（NFO）；归母权益（CSE · Common Shareholders' Equity）＝NOA－NFO－少数股东权益（MI · Minority Interest）",
+    "interpretation": "归母净利润应匹配归母权益，合并净利润应匹配合并权益；混用会改变收益率含义。",
+    "convention": "ROTCE 恒等式在合并权益层面校验，归母净资产收益率另行列示。",
+    "caveat": "经营价值转为归母股权价值时，少数股东权益按账面值扣除，实际价值可能不同。",
+    "related": [
+      "rotce",
+      "roce",
+      "nfo"
+    ],
+    "views": [
+      "map",
+      "tree",
+      "valuation"
+    ],
+    "sources": []
+  },
+  {
+    "id": "oi",
+    "title": "税后经营收益（OI · Operating Income，重构口径）",
+    "category": "资本与分类",
+    "aliases": [
+      "operating profit",
+      "NOPAT",
+      "NFE",
+      "经营利润",
+      "税后经营收益",
+      "OI · After-tax operating income",
+      "Income attributed to operations after allocating tax between operating and financing activities."
+    ],
+    "definition": "将所得税在经营与融资之间分摊后，归属于经营活动的收益。",
+    "formula": "税后净财务费用＝税前净财务费用×（1－t）；税后经营收益＝合并净利润＋税后净财务费用",
+    "interpretation": "在合并净利润上加回净财务费用，以分离经营收益；若为净财务收益，加回项为负。",
+    "convention": "税务分摊使用明确的法定税率假设，初始为25%；区分核心经营与特殊经营项目。",
+    "caveat": "此为分析重构指标，不能直接等同于中国利润表“营业利润”。未分类的税前差额如实列示。",
+    "related": [
+      "opm",
+      "rnoa",
+      "reoi"
+    ],
+    "views": [
+      "map",
+      "tree",
+      "value"
+    ],
+    "sources": [
+      "penman-valuation"
+    ]
+  },
+  {
+    "id": "capital-basis",
+    "title": "平均资本与期初资本",
+    "category": "资本与分类",
+    "aliases": [
+      "beginning balance",
+      "denominator",
+      "平均资本",
+      "期初资本",
+      "Average vs opening capital",
+      "A return combines income earned over a period with a capital stock. The chosen stock date must be stated."
+    ],
+    "definition": "收益是期间流量，资本是时点存量，收益率必须说明使用哪一时点的资本。",
+    "formula": "平均资本＝（期初余额＋期末余额）／2；期初资本＝上年年末余额",
+    "interpretation": "平均资本近似全年资本占用，期初资本衡量年初投入资本对应的当期收益。",
+    "convention": "总览与驱动树使用平均资本；剩余收益与估值基数使用期初资本。两种比率口径均保留。",
+    "caveat": "首年没有期初余额；年内发生大额资本变动时，两种年度近似均可能有局限。",
+    "related": [
+      "rnoa",
+      "roce",
+      "reoi",
+      "data-quality"
+    ],
+    "views": [
+      "tree",
+      "value"
+    ],
+    "sources": []
+  },
+  {
+    "id": "rnoa",
+    "title": "净经营资产收益率（RNOA · Return on Net Operating Assets）",
+    "category": "盈利能力",
+    "aliases": [
+      "return on net operating assets",
+      "净经营资产收益率",
+      "RNOA · Operating return",
+      "After-tax operating income earned per unit of net operating capital."
+    ],
+    "definition": "每单位净经营资产产生的税后经营收益。",
+    "formula": "RNOA＝税后经营收益／净经营资产资本基数＝经营利润率（OPM）×净经营资产周转率（ATO）",
+    "interpretation": "同一收益率可以来自高利润率、快周转或两者共同作用，应先查看分解。",
+    "convention": "驱动树使用平均资本，剩余经营收益的收益率差使用期初资本。",
+    "caveat": "净经营资产资本基数绝对值低于营业总收入的5%时不展示比率；负基数另行提示。高RNOA本身不能证明投资价值。",
+    "related": [
+      "opm",
+      "ato",
+      "capital-basis",
+      "rotce"
+    ],
+    "views": [
+      "overview",
+      "tree",
+      "value"
+    ],
+    "sources": []
+  },
+  {
+    "id": "opm",
+    "title": "税后经营利润率（OPM · Operating Profit Margin）",
+    "category": "盈利能力",
+    "aliases": [
+      "core margin",
+      "unusual margin",
+      "营业利润率",
+      "核心经营利润率",
+      "OPM · Operating margin",
+      "The share of total revenue retained as after-tax reformulated operating income."
+    ],
+    "definition": "营业总收入中形成税后重构经营收益的比例。",
+    "formula": "OPM＝税后经营收益／营业总收入；OPM＝核心经营利润率＋特殊项目利润率",
+    "interpretation": "核心与特殊项目拆分用于解释利润率变化的会计来源。",
+    "convention": "采用重构后的税后经营收益，并保留明确的税率分摊假设。",
+    "caveat": "核心分类涉及判断，不保证未来持续；特殊项目也可能反复发生。",
+    "related": [
+      "oi",
+      "gross-margin",
+      "rnoa"
+    ],
+    "views": [
+      "tree",
+      "value"
+    ],
+    "sources": []
+  },
+  {
+    "id": "gross-margin",
+    "title": "毛利率（Gross margin）",
+    "category": "盈利能力",
+    "aliases": [
+      "COGS",
+      "cost of goods sold",
+      "毛利率",
+      "Gross margin",
+      "Product-business revenue remaining after the disclosed cost of goods sold."
+    ],
+    "definition": "营业收入扣除营业成本后剩余的比例。",
+    "formula": "毛利率＝（营业收入－营业成本）／营业收入",
+    "interpretation": "此指标为理解经营利润率提供背景，尚未扣除销售、管理、财务及所得税等全部费用。",
+    "convention": "采用利润表“营业收入”；经营利润率则采用“营业总收入”，两者口径不同。",
+    "caveat": "此产品业务代理指标不含金融子公司利息项目，不能代表完整的集团经营利润率。",
+    "related": [
+      "opm",
+      "oi"
+    ],
+    "views": [
+      "tree",
+      "map"
+    ],
+    "sources": []
+  },
+  {
+    "id": "ato",
+    "title": "净经营资产周转率（ATO · Operating Asset Turnover）",
+    "category": "盈利能力",
+    "aliases": [
+      "capital intensity",
+      "NOA to sales",
+      "inventory to sales",
+      "PPE to sales",
+      "CIP",
+      "净经营资产周转率",
+      "资本密集度",
+      "ATO · Operating asset turnover",
+      "Total revenue generated per unit of net operating capital."
+    ],
+    "definition": "每单位净经营资产对应的营业总收入。",
+    "formula": "ATO＝营业总收入／净经营资产资本基数；净经营资产／营业总收入＝1／ATO",
+    "interpretation": "正资本基数下，资本增长快于收入会降低周转率；倒数可拆分为各经营资产与负债的带符号构成项。",
+    "convention": "驱动树采用平均科目余额，经营负债以减项计入资本密集度。",
+    "caveat": "高周转率也可能来自供应商或客户融资；接近零或负的资本基数需特别解释。",
+    "related": [
+      "noa",
+      "rnoa",
+      "ollev",
+      "reinvestment"
+    ],
+    "views": [
+      "tree",
+      "capital"
+    ],
+    "sources": []
+  },
+  {
+    "id": "ollev",
+    "title": "经营负债杠杆（OLLEV · Operating Liability Leverage）",
+    "category": "盈利能力",
+    "aliases": [
+      "supplier financing",
+      "经营负债杠杆",
+      "OLLEV · Operating liability leverage",
+      "The size of operating liabilities relative to net operating assets."
+    ],
+    "definition": "经营负债相对于净经营资产的规模。",
+    "formula": "OLLEV＝经营负债资本基数／净经营资产资本基数",
+    "interpretation": "供应商信用、客户预收款、应付职工薪酬等减少投资者需要提供的经营资本。",
+    "convention": "分母随比率的平均或期初口径变化；经营性资金来源与财务杠杆分别列示。",
+    "caveat": "经营负债也对应供应商付款或交付义务，较高杠杆不等于可持续的资金优势。",
+    "related": [
+      "noa",
+      "owc",
+      "advances",
+      "flev"
+    ],
+    "views": [
+      "tree",
+      "map"
+    ],
+    "sources": []
+  },
+  {
+    "id": "flev",
+    "title": "财务杠杆（FLEV · Financial Leverage）",
+    "category": "盈利能力",
+    "aliases": [
+      "financial gearing",
+      "cash drag",
+      "财务杠杆",
+      "FLEV · Financial leverage",
+      "Net financial obligations per unit of total equity."
+    ],
+    "definition": "每单位合并权益对应的净金融负债。",
+    "formula": "FLEV＝净金融负债资本基数／合并权益资本基数",
+    "interpretation": "正值表示净金融负债，负值表示净金融资产；对权益回报的贡献还取决于经营与融资利差。",
+    "convention": "合并权益包括少数股东权益，以保证合并口径恒等式勾稽。",
+    "caveat": "金融资产回报低于经营回报时，负杠杆会拉低权益收益率；这并不直接证明资本配置失当。",
+    "related": [
+      "nfo",
+      "nbc",
+      "spread",
+      "rotce"
+    ],
+    "views": [
+      "tree",
+      "overview"
+    ],
+    "sources": []
+  },
+  {
+    "id": "nbc",
+    "title": "净借款成本（NBC · Net Borrowing Cost）",
+    "category": "盈利能力",
+    "aliases": [
+      "financing return",
+      "净借款成本",
+      "NBC · Net borrowing cost",
+      "After-tax net financial expense relative to net financial obligations."
+    ],
+    "definition": "税后净财务费用相对于净金融负债的比率。",
+    "formula": "NBC＝税后净财务费用／净金融负债资本基数",
+    "interpretation": "持有净金融资产时，这一比率可能反映净金融资产收益率，而非实际支付的借款利率。",
+    "convention": "净金融负债资本基数绝对值低于营业总收入5%时不展示；税率分摊遵循重构假设。",
+    "caveat": "金融资产与借款相互抵销后，净比率可能剧烈波动，也可能不同于任何合同利率。",
+    "related": [
+      "nfo",
+      "flev",
+      "spread"
+    ],
+    "views": [
+      "tree"
+    ],
+    "sources": []
+  },
+  {
+    "id": "spread",
+    "title": "经营与融资利差（Spread）",
+    "category": "盈利能力",
+    "aliases": [
+      "RNOA minus NBC",
+      "利差",
+      "经营融资利差",
+      "Operating–financing spread",
+      "The difference between the measured operating return and the net financing rate."
+    ],
+    "definition": "经营收益率与净融资成本之间的差额。",
+    "formula": "Spread＝RNOA－NBC；融资贡献＝FLEV×Spread",
+    "interpretation": "正财务杠杆且利差为正时，融资项提高合并权益回报；任一项变号都会改变贡献方向。",
+    "convention": "驱动树展示经营与融资利差；价值创造页另行展示相对于必要报酬率的收益率差。",
+    "caveat": "会计恒等式不能证明增加借款后，经营回报、融资成本及风险会保持不变。",
+    "related": [
+      "rnoa",
+      "nbc",
+      "flev",
+      "required-return"
+    ],
+    "views": [
+      "tree",
+      "value"
+    ],
+    "sources": []
+  },
+  {
+    "id": "rotce",
+    "title": "合并净资产收益率（ROTCE · Return on Total Common Equity）",
+    "category": "盈利能力",
+    "aliases": [
+      "total common equity return",
+      "合并权益回报率",
+      "ROTCE · Total-equity return",
+      "The app’s consolidated return on total equity, including minority interests."
+    ],
+    "definition": "合并净利润相对于合并所有者权益的收益率，含少数股东权益。",
+    "formula": "ROTCE＝合并净利润／合并权益资本基数＝RNOA＋FLEV×（RNOA－NBC）",
+    "interpretation": "以匹配的合并收益和资本，将回报分为经营与净融资贡献。",
+    "convention": "保留ROTCE英文缩写；TE＝NOA－NFO，包含少数股东权益。",
+    "caveat": "与归母净资产收益率不同。经营或融资比率不适用时，分解结果可能缺失，但直接计算结果仍可显示。",
+    "related": [
+      "equity",
+      "roce",
+      "rnoa",
+      "flev"
+    ],
+    "views": [
+      "overview",
+      "tree"
+    ],
+    "sources": []
+  },
+  {
+    "id": "roce",
+    "title": "归母净资产收益率（ROCE · Return on Common Equity／ROE · Return on Equity）",
+    "category": "盈利能力",
+    "aliases": [
+      "ROE",
+      "return on common equity",
+      "归母净资产收益率",
+      "ROCE · Parent equity return",
+      "Profit attributable to parent shareholders divided by their common equity."
+    ],
+    "definition": "归属于母公司所有者的净利润相对于归母权益的收益率。",
+    "formula": "归母净资产收益率＝归母净利润／归母权益资本基数",
+    "interpretation": "用于观察母公司股东对应的账面资本回报，并须说明资本基数口径。",
+    "convention": "本网站的ROCE指普通股权益回报，不采用部分资料中的“息税前利润／资本占用”定义。",
+    "caveat": "由于少数股东权益存在，不能直接套用合并ROTCE的简化融资分解恒等式。",
+    "related": [
+      "equity",
+      "rotce",
+      "equity-re",
+      "capital-basis"
+    ],
+    "views": [
+      "tree",
+      "value"
+    ],
+    "sources": []
+  },
+  {
+    "id": "owc",
+    "title": "经营营运资本（OWC · Operating Working Capital）",
+    "category": "营运资本",
+    "aliases": [
+      "incremental working capital",
+      "营运资本",
+      "经营营运资本",
+      "OWC · Operating working capital",
+      "Operating current balances tied up after trade and other operating funding are deducted."
+    ],
+    "definition": "经营性流动资产扣除贸易及其他经营性资金来源后的净占用。",
+    "formula": "OWC＝存货＋贸易应收款＋预付款项－贸易应付款－其他经营性应付款－客户预收款",
+    "interpretation": "增加通常占用现金；收款或存货效率改善可以释放资本，而无需改变经营收益。",
+    "convention": "列示平均OWC／收入及ΔOWC／Δ收入；收入变动低于收入5%时，增量比率不展示。",
+    "caveat": "间接法营运资本调整与这一资产负债表分组可能因范围、非现金变动及时间差异而不同。",
+    "related": [
+      "dio",
+      "dso",
+      "dpo",
+      "advances",
+      "cfo"
+    ],
+    "views": [
+      "capital",
+      "map"
+    ],
+    "sources": []
+  },
+  {
+    "id": "dio",
+    "title": "存货周转天数（DIO · Days Inventory Outstanding）",
+    "category": "营运资本",
+    "aliases": [
+      "days inventory outstanding",
+      "存货周转天数",
+      "DIO · Inventory days",
+      "Average inventory expressed as days of annual cost of goods sold."
+    ],
+    "definition": "平均存货相对于全年营业成本所对应的天数。",
+    "formula": "DIO＝365×平均存货／营业成本",
+    "interpretation": "较长生产或陈酿周期可能需要较高存货，应结合业务流程与销售变化判断。",
+    "convention": "采用消除科目重叠后的平均期初、期末存货，全年按365天。",
+    "caveat": "这是存量与年度成本的比率，不代表每件存货的实际库龄；缺失余额时显示断点。",
+    "related": [
+      "ccc",
+      "owc",
+      "ato"
+    ],
+    "views": [
+      "overview",
+      "map"
+    ],
+    "sources": [
+      "working-capital"
+    ]
+  },
+  {
+    "id": "dso",
+    "title": "应收款项周转天数（DSO · Days Sales Outstanding）",
+    "category": "营运资本",
+    "aliases": [
+      "days sales outstanding",
+      "应收账款周转天数",
+      "DSO · Receivable days",
+      "Trade receivables expressed as days of annual product revenue."
+    ],
+    "definition": "贸易应收款项相对于全年营业收入所对应的天数。",
+    "formula": "DSO＝365×平均贸易应收款项／营业收入",
+    "interpretation": "应收款项相对收入增加，可能意味着客户信用占用更多资金。",
+    "convention": "包括应收票据、应收账款及应收款项融资，消除重叠后加总；不包括其他应收款。",
+    "caveat": "以营业收入近似赊销收入。应收分组未披露时，该比率保留缺失，不因其他分组规则而自动视为零。",
+    "related": [
+      "ccc",
+      "owc",
+      "advances"
+    ],
+    "views": [
+      "overview",
+      "map"
+    ],
+    "sources": [
+      "working-capital"
+    ]
+  },
+  {
+    "id": "dpo",
+    "title": "应付款项周转天数（DPO · Days Payable Outstanding）",
+    "category": "营运资本",
+    "aliases": [
+      "days payable outstanding",
+      "supplier credit",
+      "应付账款周转天数",
+      "DPO · Payable days",
+      "Trade payables expressed as days of estimated annual purchases."
+    ],
+    "definition": "贸易应付款项相对于估算全年采购额所对应的天数。",
+    "formula": "DPO＝365×平均贸易应付款项／估算采购额；采购额≈营业成本＋存货增加额",
+    "interpretation": "更长账期可能降低投资者所需提供的经营资本，同时增加对供应商的付款义务。",
+    "convention": "主要口径使用估算采购额，同时保留以营业成本为分母的DPO对照值。",
+    "caveat": "存货变化可能包含采购以外的影响，故采购额仅为近似。比较时须使用相同分母，并结合供应商条款。",
+    "related": [
+      "ccc",
+      "owc",
+      "ollev"
+    ],
+    "views": [
+      "overview",
+      "map"
+    ],
+    "sources": [
+      "working-capital"
+    ]
+  },
+  {
+    "id": "advances",
+    "title": "客户预收款天数",
+    "category": "营运资本",
+    "aliases": [
+      "prepayments from customers",
+      "contract liabilities",
+      "预收款项",
+      "合同负债",
+      "客户融资",
+      "Customer advance days",
+      "Customer payments received before the associated delivery or revenue recognition, expressed relative to annual sales."
+    ],
+    "definition": "客户在交付或确认收入前支付的款项，相对于全年营业收入的天数。",
+    "formula": "客户预收款天数＝365×平均（预收款项＋合同负债）／营业收入",
+    "interpretation": "客户为经营提供资金；若存货增加而客户资金减少，需要由其他来源补足。",
+    "convention": "客户预收款天数单独展示，不从本网站的现金转换周期中扣除。",
+    "caveat": "这些余额对应未来交付义务，其现金益处不代表最终销售的盈利水平。",
+    "related": [
+      "owc",
+      "ccc",
+      "ollev"
+    ],
+    "views": [
+      "overview",
+      "map"
+    ],
+    "sources": []
+  },
+  {
+    "id": "ccc",
+    "title": "现金转换周期（CCC · Cash Conversion Cycle）",
+    "category": "营运资本",
+    "aliases": [
+      "cash operating cycle",
+      "operating cycle",
+      "net operating cycle",
+      "营业周期",
+      "净营业周期",
+      "现金转换周期",
+      "CCC · Cash conversion cycle",
+      "A composite days measure combining inventory holding, customer collection and supplier payment."
+    ],
+    "definition": "将存货持有、客户收款与供应商付款周期组合起来的天数指标。",
+    "formula": "CCC＝存货周转天数（DIO）＋应收款项周转天数（DSO）－应付款项周转天数（DPO）；教科书中的营业周期＝DIO＋DSO，CCC＝营业周期－DPO",
+    "interpretation": "分项反映经营资金占用环节；相同业务规模下，更短周期可能降低资金需求。为负时，供应商账期覆盖了存货和应收占用的天数。",
+    "convention": "按365天计算：DIO以营业成本、DSO以营业收入、DPO以估算采购额（营业成本＋存货增加额）为分母，另保留以营业成本为分母的DPO对照值；客户预收款天数另行列示，不并入CCC。",
+    "caveat": "名称因披露者而异：亚马逊把“存货销售天数＋应收账款销售天数－应付账款天数”称为 operating cycle（营业周期），与本应用的CCC公式一致，但教科书中的营业周期通常不扣DPO。比较外部数据时应先核对公式和各项天数的分母，例如存货天数以销售额还是营业成本计算。任一组成指标缺失则显示断点；CCC未包含全部经营余额，不能直接预测经营现金流。",
+    "related": [
+      "dio",
+      "dso",
+      "dpo",
+      "advances",
+      "owc"
+    ],
+    "views": [
+      "overview"
+    ],
+    "sources": [
+      "working-capital"
+    ]
+  },
+  {
+    "id": "cfo",
+    "title": "净利润调节为经营现金流（CFO · Cash Flow from Operations）",
+    "category": "现金流与再投资",
+    "aliases": [
+      "cash conversion",
+      "accruals",
+      "NI to cash",
+      "经营现金流",
+      "净现比",
+      "CFO · Earnings to operating cash",
+      "Reported operating cash flow reconciles accrual profit with noncash items and cash timing."
+    ],
+    "definition": "通过非现金项目及现金收付时点调整，将权责发生制净利润调节至经营活动现金流量净额。",
+    "formula": "净利润＋披露的非现金等调整＋披露的营运资本调整＝间接法经营现金流量净额；净现比＝经营现金流量净额／净利润",
+    "interpretation": "瀑布图展示现金与利润差额的披露来源，存货增加通常消耗现金。",
+    "convention": "起点采用补充资料净利润，分别校验间接法与正表经营现金流量净额；补充资料缺失时不构造桥。",
+    "caveat": "保留源报表分类：利息收入现金流列投资活动，股利、利润及利息支付合并列筹资活动；不跨会计制度强行调整。",
+    "related": [
+      "owc",
+      "fcf",
+      "data-quality"
+    ],
+    "views": [
+      "overview",
+      "map"
+    ],
+    "sources": [
+      "cas-cashflow"
+    ]
+  },
+  {
+    "id": "fcf",
+    "title": "自由现金流的不同口径（FCF · Free Cash Flow）",
+    "category": "现金流与再投资",
+    "aliases": [
+      "free cash flow",
+      "Penman FCF",
+      "自由现金流",
+      "FCF · Free cash flow definitions",
+      "Cash remaining after a stated measure of investment. The app keeps its different definitions visible."
+    ],
+    "definition": "扣除明确口径的投资支出后剩余的现金或重构经营收益，需同时说明计算定义。",
+    "formula": "简式FCF＝经营现金流量净额－现金资本开支；含处置FCF＝简式FCF＋资产处置回款；重构FCF＝税后经营收益－净经营资产增加额",
+    "interpretation": "低自由现金流可能来自投资扩张，应结合投资回报和经营表现判断。",
+    "convention": "现金资本开支采用“购建固定资产、无形资产和其他长期资产支付的现金”，已包含资本化的软件、开发支出等无形资产及长期待摊费用支出。亚马逊将FCF定义为经营活动现金流量净额减购置固定资产支出（含资本化的内部使用软件和网站开发），两者扣减范围相近，本应用简式FCF即采用这一结构。总览逐年列示，资本页比较简式口径与重构口径，并如实列示勾稽差额。",
+    "caveat": "跨准则比较需注意分类差异：按企业会计准则，偿付利息列筹资活动，收到的利息常列投资活动，因此简式FCF近似为利息前现金流；美国准则下经营现金流通常已含利息收付。简式FCF未扣减租赁负债本金（列筹资活动），租入资产为主的公司会显得较高，亚马逊另行披露扣除融资租赁本金后的口径。各口径存在分类及勾稽差异；FCF没有统一定义，也不等于完全可自由分配的现金。",
+    "related": [
+      "cfo",
+      "reinvestment",
+      "capex"
+    ],
+    "views": [
+      "overview",
+      "capital",
+      "map",
+      "valuation"
+    ],
+    "sources": [
+      "penman-valuation",
+      "sec-fcf",
+      "amazon-2004-letter"
+    ]
+  },
+  {
+    "id": "reinvestment",
+    "title": "资本增长与再投资率",
+    "category": "现金流与再投资",
+    "aliases": [
+      "capital investment bridge",
+      "NOA growth",
+      "再投资率",
+      "资本增长",
+      "Capital growth & reinvestment",
+      "Growth in net operating capital measured across consecutive year ends."
+    ],
+    "definition": "相邻年末之间净经营资产的增加额。",
+    "formula": "ΔNOA＝期末NOA－期初NOA＝Δ归母权益＋Δ少数股东权益＋Δ净金融负债；再投资率＝ΔNOA／税后经营收益",
+    "interpretation": "资本桥展示哪些资产占用资本、哪些经营负债提供资金；应比较资本、收入与剩余收益的变化。",
+    "convention": "采用税后经营收益作分母；收益接近零或缺少期初余额时不展示比率。",
+    "caveat": "负再投资可能源于经营性资金来源增加，并不一定表示出售资产。资本增长本身不等于价值创造。",
+    "related": [
+      "noa",
+      "ato",
+      "fcf",
+      "reoi"
+    ],
+    "views": [
+      "capital",
+      "value"
+    ],
+    "sources": []
+  },
+  {
+    "id": "capex",
+    "title": "资本性支出与折旧摊销（Capex · Capital Expenditure／D&A · Depreciation & Amortization）",
+    "category": "现金流与再投资",
+    "aliases": [
+      "capital expenditures",
+      "D&A",
+      "PPE",
+      "construction",
+      "maintenance capex",
+      "growth capex",
+      "资本开支",
+      "折旧摊销",
+      "Cash capex & depreciation",
+      "Capex is cash spent on long-lived assets; depreciation and amortization allocate recorded asset cost over time."
+    ],
+    "definition": "资本性支出是购建长期资产的现金支付，折旧摊销则按期间分配已记录的资产成本。",
+    "formula": "折旧摊销＝固定资产折旧、油气资产折耗、生产性生物资产折旧＋使用权资产折旧＋无形资产摊销＋长期待摊费用摊销；资本开支／折旧摊销＝现金资本开支／折旧摊销",
+    "interpretation": "应结合资产消耗、扩产计划及付款时点理解投资，现金支出与费用确认时点可能不同。倍数长期高于1，说明长期资产投入快于账面消耗。",
+    "convention": "现金资本开支采用“购建固定资产、无形资产和其他长期资产支付的现金”；折旧摊销取现金流量表补充资料中已披露项目之和，部分项目未披露时只加总已披露项目，全部未披露时保留缺失。总览按年份并列展示折旧摊销、经营现金流、资本开支和自由现金流。",
+    "caveat": "仅凭汇总财报无法划分维持性与增长性资本开支，折旧摊销也不能单独视为维持性资本开支。折旧摊销含使用权资产折旧，而对应的租赁付款列筹资活动、不计入资本开支，租入资产较多的公司该倍数会偏低。",
+    "related": [
+      "fcf",
+      "reinvestment",
+      "noa"
+    ],
+    "views": [
+      "overview",
+      "capital",
+      "map"
+    ],
+    "sources": []
+  },
+  {
+    "id": "reoi",
+    "title": "剩余经营收益（ReOI · Residual Operating Income）",
+    "category": "价值创造与估值",
+    "aliases": [
+      "economic profit",
+      "capital charge",
+      "growth quality",
+      "剩余经营收益",
+      "经济利润",
+      "ReOI · Residual operating income",
+      "Operating income remaining after a charge for the opening operating capital at an assumed required return."
+    ],
+    "definition": "从税后经营收益中扣除期初经营资本按假设必要报酬率计算的资本费用。",
+    "formula": "ReOIₜ＝税后经营收益ₜ－经营必要报酬率（r_op）×期初净经营资产",
+    "interpretation": "正值表示收益超过这一假设的资本费用；变动桥拆分收入、利润率与新增资本费用。",
+    "convention": "采用期初资本；默认经营必要报酬率为8%，属于记录在数据中的假设，桥按收入优先顺序分解。",
+    "caveat": "分解属于会计关系，增长与周转效应需一并阅读；必要报酬率没有按市场风险模型估计。",
+    "related": [
+      "oi",
+      "required-return",
+      "reinvestment",
+      "equity-re"
+    ],
+    "views": [
+      "value",
+      "valuation"
+    ],
+    "sources": [
+      "penman-valuation"
+    ]
+  },
+  {
+    "id": "equity-re",
+    "title": "剩余权益收益（RE · Residual Earnings）",
+    "category": "价值创造与估值",
+    "aliases": [
+      "residual income",
+      "equity RI",
+      "clean surplus",
+      "OCI",
+      "dirty surplus",
+      "剩余收益",
+      "RE · Residual equity earnings",
+      "Parent net income remaining after a charge for opening parent common equity."
+    ],
+    "definition": "以归母综合收益计量的权益收益，扣除对期初归母权益按必要报酬率计提的资本费用。",
+    "formula": "REₜ＝归母综合收益ₜ − 权益必要报酬率（r_e）× 期初归母权益",
+    "interpretation": "该指标反映全部归母权益的运用结果，包括金融资产的影响。",
+    "convention": "依据 Penman 原文第 14–15 页，采用归母综合收益和期初归母权益。归母净资产收益率仍按归母净利润计算。",
+    "caveat": "归母综合收益缺失时，相关剩余收益和估值留空。必要报酬率为模型假设。",
+    "related": [
+      "reoi",
+      "equity",
+      "roce",
+      "aeg"
+    ],
+    "views": [
+      "value",
+      "valuation"
+    ],
+    "sources": [
+      "penman-valuation"
+    ]
+  },
+  {
+    "id": "aeg",
+    "title": "异常盈余增长（AEG · Abnormal Earnings Growth）与市盈率",
+    "category": "价值创造与估值",
+    "aliases": [
+      "normal PE",
+      "forward price earnings",
+      "cum dividend earnings",
+      "异常盈余增长",
+      "市盈率",
+      "AEG · Abnormal earnings growth",
+      "Earnings growth beyond the required growth in prior earnings after allowing for the return on the prior net payout."
+    ],
+    "definition": "考虑上期净分配款项的必要回报后，超过上期盈余必要增长的部分。",
+    "formula": "AEGₜ＝归母综合收益ₜ ＋ r_e × 净分配ₜ₋₁ −（1 ＋ r_e）× 归母综合收益ₜ₋₁；正常前瞻倍数＝1 ÷ r_e",
+    "interpretation": "在相同的剩余收益预测下，AEG估值与剩余权益收益估值按代数关系相等。",
+    "convention": "依据 Penman 原文第 15–16 页。历史净分配以归母综合收益减去归母权益增加额反推，可能含其他直接计入权益的变动。两种模型估值使用同一组预测假设。",
+    "caveat": "历史 AEG 基于反推净分配。估值图中的前瞻收益倍数用模型预测的归母综合收益作分母；同年归母净利润口径的市盈率为事后计算。",
+    "related": [
+      "equity-re",
+      "valuation",
+      "required-return"
+    ],
+    "views": [
+      "valuation"
+    ],
+    "sources": [
+      "penman-valuation"
+    ]
+  },
+  {
+    "id": "valuation",
+    "title": "账面资本加未来剩余收益估值",
+    "category": "价值创造与估值",
+    "aliases": [
+      "SF1",
+      "SF2",
+      "SF3",
+      "enterprise value",
+      "V/P",
+      "ReOI growth",
+      "估值",
+      "剩余收益估值",
+      "Book plus future residual income",
+      "The primary simple model adds the value of a growing stream of residual operating income to closing operating book capital."
+    ],
+    "definition": "主要简化模型在期末净经营资产账面值上，加上按永续增长假设计算的剩余经营收益现值。",
+    "formula": "经营价值＝NOA₀＋ReOI₀×（1＋g）／（r_op－g）；归母股权价值＝经营价值－NFO₀－少数股东权益₀",
+    "interpretation": "估值桥区分账面资本、零增长剩余收益价值、增长价值及融资调整；V/P比较模型价值与市值。",
+    "convention": "ReOI₀使用当期经营收益及期初NOA；另列账面、零增长和RNOA基数方案，净金融负债及少数股东权益按账面值计入。",
+    "caveat": "要求g小于r。永续增长只是粗略预测；同年年末股价与数月后披露的年报搭配属于事后分析口径。",
+    "related": [
+      "reoi",
+      "reverse-valuation",
+      "required-return",
+      "nfo"
+    ],
+    "views": [
+      "valuation"
+    ],
+    "sources": [
+      "penman-valuation"
+    ]
+  },
+  {
+    "id": "reverse-valuation",
+    "title": "反向估值与价格隐含假设",
+    "category": "价值创造与估值",
+    "aliases": [
+      "implied growth",
+      "implied required return",
+      "reverse DCF",
+      "sensitivity",
+      "反向估值",
+      "隐含增长率",
+      "What the market price implies",
+      "Reverse analysis solves for the growth rate or required return that makes a stated model equal the observed market price."
+    ],
+    "definition": "固定模型其他条件，反求使模型价值等于市场价格的增长率或必要报酬率。",
+    "formula": "市场经营价值＝总市值＋NFO＋少数股东权益；X＝市场经营价值－NOA；隐含g＝（r_op×X－ReOI₀）／（X＋ReOI₀）",
+    "interpretation": "反向曲线展示与价格一致的r、g组合，敏感性矩阵展示假设变化对V/P的影响。",
+    "convention": "主要采用ReOI基数，同时列示RNOA、重构FCF及剩余权益收益基数作比较。",
+    "caveat": "隐含参数以模型为条件，不等于市场预测；基数非正或永续解无效时不展示，并给出提示。",
+    "related": [
+      "valuation",
+      "required-return",
+      "fcf"
+    ],
+    "views": [
+      "valuation"
+    ],
+    "sources": []
+  },
+  {
+    "id": "required-return",
+    "title": "必要报酬率与永续增长假设",
+    "category": "价值创造与估值",
+    "aliases": [
+      "r_op",
+      "r_e",
+      "discount rate",
+      "cost of capital",
+      "perpetual g",
+      "必要报酬率",
+      "永续增长率",
+      "Required return & growth assumptions",
+      "Required return is the return charged for committing capital; perpetual growth specifies how the model’s future residual earnings evolve."
+    ],
+    "definition": "必要报酬率用于对投入资本计提资本费用，永续增长率用于描述未来剩余收益的增长。",
+    "formula": "经营资本费用＝r_op×期初NOA；权益资本费用＝r_e×期初归母权益；永续模型要求g＜r",
+    "interpretation": "正剩余收益流下，更高必要报酬率会降低模型价值；增长率应结合报酬率一并阅读。",
+    "convention": "默认r_op＝8%、r_e＝8%、g＝3%，均为明确记录的情景假设，非估计值。",
+    "caveat": "未估计市场贝塔、分析师预测或显式预测期；改变假设会改变估值，但不会改变已披露财报。",
+    "related": [
+      "reoi",
+      "equity-re",
+      "valuation",
+      "reverse-valuation"
+    ],
+    "views": [
+      "value",
+      "valuation"
+    ],
+    "sources": []
+  },
+  {
+    "id": "data-quality",
+    "title": "缺失值、提示与勾稽差额",
+    "category": "数据口径",
+    "aliases": [
+      "null",
+      "NaN",
+      "suppression",
+      "reconciliation",
+      "provenance",
+      "not disclosed",
+      "缺失值",
+      "勾稽",
+      "校验",
+      "Missing data, flags & residuals",
+      "A displayed gap means the calculation is unavailable or suppressed; a reconciliation residual is the measured difference between two stated sides."
+    ],
+    "definition": "图表断点表示数据缺失或计算受限；勾稽差额是按明确两端口径计算的实际差异。",
+    "formula": "勾稽差额＝报表目标值－计算构成项合计",
+    "interpretation": "请区分缺少披露、没有期初余额、分母过小或分类差异。金额图默认亿元，校验差额用元保留精度。",
+    "convention": "原始数据保留来源；科目分组对结构性不存在项目有特定规则，不代表所有缺失指标都可按零处理。批量分析按单公司命令行的容差逐家汇总恒等式校验（R1–R4 报表重构、L 经济地图、E 年度演化、T 驱动树、B 资本桥、RI 剩余收益、V 估值），未通过的校验族显示在公司栏，如实列示、不强制轧平。常见原因是数据源缺少明细科目、金融子公司特殊科目尚未映射，以及 2019 年报表格式切换期间个别公司减值损失的符号。L4（公司自身间接法补充资料与经营现金流的勾稽）属于披露诊断，不计入未通过项。",
+    "caveat": "差额为零仅证明所述会计关系勾稽，不代表预测有效、因果关系成立或分类无需判断。金额原值统一为人民币元，不可对已换算数据再次按万元倍乘。",
+    "related": [
+      "capital-basis",
+      "reformulation",
+      "cfo",
+      "units"
+    ],
+    "views": [
+      "overview",
+      "map",
+      "tree",
+      "capital",
+      "value",
+      "valuation"
+    ],
+    "sources": []
+  },
+  {
+    "id": "units",
+    "title": "金额、股数与中文单位",
+    "category": "数据口径",
+    "aliases": [
+      "元",
+      "万元",
+      "亿元",
+      "万股",
+      "亿股",
+      "units",
+      "billion",
+      "million",
+      "CNY",
+      "人民币",
+      "金额单位"
+    ],
+    "definition": "网站金额输入统一为人民币元，展示时按明确标注的中文单位换算；股价、股数、比率各有独立单位。",
+    "formula": "1亿元＝10,000万元＝100,000,000元；1 billion元＝10亿元；股价单位为元/股。",
+    "interpretation": "例如1,000,000,000元显示为10.00亿元；不能把英文B对应的数字直接改成“亿”。百分比乘100后显示%，周转天数显示天。",
+    "convention": "金额图表、瀑布图、科目明细与提示统一使用亿元；股价及模型每股价值使用元/股；勾稽差额用元，不足 1 分时保留可读的小数，极端微小值才用科学计数法。",
+    "caveat": "Tushare每日指标原始市值单位为万元、股本为万股，后端已分别乘10,000转换为元和股。前端对导出数据只做展示缩放，不可再重复倍乘；输入单位不符时停止加载。",
+    "related": [
+      "data-quality",
+      "valuation",
+      "noa"
+    ],
+    "views": [
+      "overview",
+      "map",
+      "capital",
+      "valuation"
+    ],
+    "sources": [
+      "tushare-units"
+    ]
+  }
+]

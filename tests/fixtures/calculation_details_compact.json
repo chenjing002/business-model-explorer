@@ -1,0 +1,147 @@
+{
+ "expanded": {
+  "20231231": {
+   "days_per_year": {
+    "label": "周转天数基准",
+    "value": 365.0,
+    "unit": "days",
+    "formula": "模型约定",
+    "inputs": []
+   },
+   "ccc": {
+    "label": "现金循环周期（CCC）",
+    "value": null,
+    "unit": "days",
+    "formula": "DIO ＋ DSO − DPO",
+    "inputs": [
+     "dio",
+     "dso",
+     "dpo"
+    ],
+    "reason": "no_opening_balance"
+   },
+   "raw:revenue": {
+    "label": "营业收入",
+    "value": 0,
+    "unit": "CNY_yuan",
+    "formula": "Tushare 年度合并报表披露值",
+    "source": "income.revenue",
+    "ann_date": "20240402",
+    "row_hash": "aa11"
+   }
+  },
+  "20241231": {
+   "days_per_year": {
+    "label": "周转天数基准",
+    "value": 365.0,
+    "unit": "days",
+    "formula": "模型约定",
+    "inputs": []
+   },
+   "ccc": {
+    "label": "现金循环周期（CCC）",
+    "value": -35.4,
+    "unit": "days",
+    "formula": "DIO ＋ DSO − DPO",
+    "inputs": [
+     "dio",
+     "dso",
+     "dpo"
+    ]
+   },
+   "raw:revenue": {
+    "label": "营业收入",
+    "value": 0.0,
+    "unit": "CNY_yuan",
+    "formula": "Tushare 年度合并报表披露值",
+    "source": "income.revenue",
+    "ann_date": "20250328",
+    "row_hash": "bb22"
+   },
+   "map:inventory": {
+    "label": "存货",
+    "value": 1500000000.0,
+    "unit": "CNY_yuan",
+    "formula": "加总已披露科目",
+    "inputs": [
+     "raw:inventory"
+    ],
+    "note": "只在本年出现"
+   }
+  },
+  "20251231": {}
+ },
+ "compact": {
+  "format": "by_code_v1",
+  "years": [
+   "20231231",
+   "20241231",
+   "20251231"
+  ],
+  "shared": {
+   "days_per_year": {
+    "label": "周转天数基准",
+    "value": 365.0,
+    "unit": "days",
+    "formula": "模型约定",
+    "inputs": []
+   },
+   "ccc": {
+    "label": "现金循环周期（CCC）",
+    "unit": "days",
+    "formula": "DIO ＋ DSO − DPO",
+    "inputs": [
+     "dio",
+     "dso",
+     "dpo"
+    ]
+   },
+   "raw:revenue": {
+    "label": "营业收入",
+    "unit": "CNY_yuan",
+    "formula": "Tushare 年度合并报表披露值",
+    "source": "income.revenue"
+   },
+   "map:inventory": {
+    "label": "存货",
+    "value": 1500000000.0,
+    "unit": "CNY_yuan",
+    "formula": "加总已披露科目",
+    "inputs": [
+     "raw:inventory"
+    ],
+    "note": "只在本年出现"
+   }
+  },
+  "values": {
+   "days_per_year": {
+    "20231231": {},
+    "20241231": {}
+   },
+   "ccc": {
+    "20231231": {
+     "value": null,
+     "reason": "no_opening_balance"
+    },
+    "20241231": {
+     "value": -35.4
+    }
+   },
+   "raw:revenue": {
+    "20231231": {
+     "value": 0,
+     "ann_date": "20240402",
+     "row_hash": "aa11"
+    },
+    "20241231": {
+     "value": 0.0,
+     "ann_date": "20250328",
+     "row_hash": "bb22"
+    }
+   },
+   "map:inventory": {
+    "20241231": {}
+   }
+  }
+ }
+}

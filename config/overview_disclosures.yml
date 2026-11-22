@@ -1,0 +1,29 @@
+# 年报补充披露。按公司代码和报告期末分组，金额填人民币元，毛利率填小数。
+# 每个区块可省略。page 为 PDF 页序，与浏览器 #page 链接一致。
+600519.SH:
+  name: 贵州茅台
+  annual:
+    '20251231':
+      unit: CNY_yuan
+      report_url: https://static.cninfo.com.cn/finalpage/2026-04-17/1225114741.PDF
+      products:
+        page: 10
+        rows:
+          - {label: 茅台酒, revenue: 146499906480.49, gross_margin: 0.9353}
+          - {label: 其他系列酒, revenue: 22274678707.16, gross_margin: 0.7611}
+      inventory:
+        page: 91
+        rows:
+          - {label: 原材料, begin: 3095759897.27, end: 3738451309.98}
+          - {label: 在产品, begin: 24680122077.98, end: 25663368216.66}
+          - {label: 库存商品, begin: 2980871894.39, end: 4506771668.40}
+          - {label: 自制半成品, begin: 23586531287.83, end: 27518830601.14}
+      cash_explanation:
+        page: 10
+        text: 年报将经营现金流量净额下降主要归因于财务公司吸收集团成员单位存款减少，以及不可随时支取的同业存款增加。
+      shareholder_distribution:
+        page: 68
+        value: 67241733345.45
+      share_repurchase:
+        page: 114
+        value: 6120578572.09
