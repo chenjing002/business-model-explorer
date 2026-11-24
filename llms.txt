@@ -1,0 +1,16 @@
+# 商业模式探索器 · Agent 数据入口
+
+> 无需运行 JavaScript、无需登录。HTTP GET 下列静态 JSON 即可。
+
+- [数据目录（先读）](https://chenjing002.github.io/business-model-explorer/api/v1/catalog.json)
+- [公司索引](https://chenjing002.github.io/business-model-explorer/api/v1/companies.json)
+- [多项入选](https://chenjing002.github.io/business-model-explorer/api/v1/rankings/multi.json)
+- [自由现金流持续增长](https://chenjing002.github.io/business-model-explorer/api/v1/rankings/fcf_growth.json)
+- [高且稳定的净资产收益率](https://chenjing002.github.io/business-model-explorer/api/v1/rankings/high_roe.json)
+- [经营资产回报高](https://chenjing002.github.io/business-model-explorer/api/v1/rankings/high_rnoa.json)
+- [先收款后付款](https://chenjing002.github.io/business-model-explorer/api/v1/rankings/cash_cycle.json)
+- [利润含金量高](https://chenjing002.github.io/business-model-explorer/api/v1/rankings/cash_quality.json)
+
+先读公司索引，按 ts_code / name / industry 找到公司，再 GET history_url 获取全部可用年度。history_url 可能位于 business-model-explorer-data；请跟随索引，不要猜分站路径。
+metrics 的 values 数组与 years 报告期数组一一对应，指标含中文 label、unit 和 formula；metadata_by_year 为当年口径变化。金额为人民币元，pct 为小数比例（0.15=15%），pp 为比例差（0.01=1个百分点）。null 不等于零，missing_reasons 保留原因。数据日期以各文件 exported_at / end_date 为准。
+完整审计数据在 bundle_url：显式 gzip 文件，需解压，calculation_details 为 by_code_v1 格式。该字段以 shared[code] 与 values[code][year] 合并恢复；years 列出全部报告期。
