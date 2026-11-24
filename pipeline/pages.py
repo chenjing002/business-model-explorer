@@ -32,6 +32,7 @@ from pathlib import Path
 
 from .config import PROJECT_ROOT
 from .export import BUNDLE_SUFFIX
+from .agent_data import API, history, stage_catalog, write_json
 
 OWNER = "chenjing002"
 APP_SITE = "business-model-explorer"
@@ -106,8 +107,21 @@ def compact_bundle(source: Path, target: Path) -> tuple[int, int]:
     return source.stat().st_size, target.stat().st_size
 
 
-def _compact_job(job: tuple[str, str]) -> tuple[int, int]:
-    return compact_bundle(Path(job[0]), Path(job[1]))
+def company_url(code: str) -> str:
+    return f"https://{OWNER}.github.io/{site_for(code)}/{API}/companies/{code}.json"
+
+
+def bundle_url(code: str) -> str:
+    return f"https://{OWNER}.github.io/{site_for(code)}/data/{code}{BUNDLE_SUFFIX}"
+
+
+def _compact_job(job: tuple[str, str]) -> tuple[int, int, str, list[str]]:
+    source, target = map(Path, job)
+    bundle = json.loads(gzip.decompress(source.read_bytes()))
+    code = bundle["ts_code"]
+    annual = history(bundle, bundle_url(code))
+    write_json(target.parent.parent / API / "companies" / f"{code}.json", annual)
+    return (*compact_bundle(source, target), code, [date[:4] for date in annual["years"]])
 
 
 def _dir_bytes(path: Path) -> int:
@@ -154,17 +168,25 @@ def stage(out_root: Path = DEFAULT_OUT, build: bool = True, workers: int = 6) ->
     with ProcessPoolExecutor(max_workers=workers) as pool:
         sizes = list(pool.map(_compact_job, jobs, chunksize=32))
 
+    stage_catalog(app, json.loads((public / "data/companies.json").read_text()),
+                  json.loads((public / "data/screens.json").read_text()),
+                  {code: years for _, _, code, years in sizes},
+                  f"https://{OWNER}.github.io/{APP_SITE}/", company_url, bundle_url)
+
     for name, path in sites.items():
         (path / ".nojekyll").touch()
         if name != APP_SITE:
+            (path / "llms.txt").write_text(
+                f"# 商业模式探索器 · 数据分站\n\n公司与榜单索引：https://{OWNER}.github.io/{APP_SITE}/llms.txt\n",
+                encoding="utf-8")
             (path / "index.html").write_text(
                 f'<!doctype html><meta charset="utf-8"><title>商业模式探索器 · 数据</title>'
                 f'<p>本站仅存放公司数据包，请访问 <a href="/{APP_SITE}/">商业模式探索器</a>。</p>\n',
                 encoding="utf-8")
     report = {name: {"path": str(path), "bundles": len(list((path / "data").glob(f"*{BUNDLE_SUFFIX}"))),
                      "bytes": _dir_bytes(path)} for name, path in sites.items()}
-    report["_bundles"] = {"count": len(sizes), "source_bytes": sum(s for s, _ in sizes),
-                          "published_bytes": sum(t for _, t in sizes)}
+    report["_bundles"] = {"count": len(sizes), "source_bytes": sum(r[0] for r in sizes),
+                          "published_bytes": sum(r[1] for r in sizes)}
     over = [name for name, r in report.items() if not name.startswith("_") and r["bytes"] > SITE_LIMIT_BYTES]
     if over:
         raise RuntimeError(f"Pages site over {SITE_LIMIT_BYTES:,} bytes: {', '.join(over)}")
